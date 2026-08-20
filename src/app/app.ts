@@ -28,7 +28,7 @@ export class AppComponent {
     }
 
     this.erroMensagem = '';
-    const url = `https://openweathermap.org{this.cidade}&units=metric&appid=${this.apiKey}&lang=pt_br`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.cidade}&units=metric&appid=${this.apiKey}&lang=pt_br`;
 
     this.http.get(url).subscribe({
       next: (dados: any) => {

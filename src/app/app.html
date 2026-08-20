@@ -1,0 +1,35 @@
+<div class="dashboard" style="font-family: Arial, sans-serif; padding: 20px; text-align: center;">
+  <h1>Dashboard de Clima</h1>
+  
+  <div class="busca" style="margin-bottom: 20px;">
+    <input [(ngModel)]="cidade" placeholder="Digite a cidade..." style="padding: 10px; font-size: 16px;" />
+    <button (click)="buscarClima()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Buscar</button>
+  </div>
+
+  @if (erroMensagem) {
+    <div style="color: red; font-weight: bold; margin: 15px;">
+      ⚠️ {{ erroMensagem }}
+    </div>
+  }
+
+  @if (dadosClima) {
+    <div class="cartao-clima" style="border: 1px solid #ccc; padding: 20px; display: inline-block; border-radius: 8px; background: #f9f9f9;">
+      <h2>{{ dadosClima.name }}, {{ dadosClima.sys?.country }}</h2>
+      <p class="temp" style="font-size: 32px; font-weight: bold; margin: 10px 0;">
+        {{ dadosClima.main?.temp | number:'1.0-0' }}°C
+      </p>
+      
+      <!-- Lendo o primeiro item da lista de clima da API -->
+      @if (dadosClima.weather && dadosClima.weather[0]) {
+        <p class="condicao" style="text-transform: capitalize; color: #555;">
+          {{ dadosClima.weather[0].description }}
+        </p>
+      }
+      
+      <div class="detalhes" style="margin-top: 15px; font-size: 14px; color: #666;">
+        <p>Umidade: {{ dadosClima.main?.humidity }}%</p>
+        <p>Vento: {{ dadosClima.wind?.speed }} km/h</p>
+      </div>
+    </div>
+  }
+</div>

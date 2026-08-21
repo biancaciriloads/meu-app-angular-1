@@ -1,0 +1,124 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-card: #f9f9f9;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-muted: #666666;
+  --border-color: #cccccc;
+  --error-color: #ff4444;
+  --button-bg: #ffffff;
+  --button-hover: #f0f0f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg-primary: #1a1a2e;
+  --bg-card: #16213e;
+  --text-primary: #eaeaea;
+  --text-secondary: #b0b0b0;
+  --text-muted: #8a8a8a;
+  --border-color: #3a3a5c;
+  --error-color: #ff6b6b;
+  --button-bg: #0f3460;
+  --button-hover: #1a4a7a;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+.dashboard {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  text-align: center;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.busca {
+  margin-bottom: 20px;
+}
+
+.busca input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px 0 0 6px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.busca button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: var(--button-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  transition: background 0.2s ease;
+}
+
+.busca button:hover {
+  background: var(--button-hover);
+}
+
+.erro-mensagem {
+  color: var(--error-color);
+  font-weight: bold;
+  margin: 15px;
+}
+
+.cartao-clima {
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  display: inline-block;
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.temp {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: var(--text-primary);
+}
+
+.condicao {
+  text-transform: capitalize;
+  color: var(--text-secondary);
+}
+
+.detalhes {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.detalhes p {
+  margin: 5px 0;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--button-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.05);
+  background: var(--button-hover);
+}

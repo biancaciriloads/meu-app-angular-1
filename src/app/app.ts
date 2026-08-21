@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +12,31 @@ import { DecimalPipe } from '@angular/common';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   cidade: string = '';
   dadosClima: any = null;
   erroMensagem: string = '';
   apiKey: string = '78a0ebbf843d1b3baeff34cc8374b721';
+  isDarkMode: boolean = false;
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
 
   constructor(private http: HttpClient) {}
 
+  ngOnInit(): void {
+    if (this.isBrowser) {
+      const saved = localStorage.getItem('darkMode');
+      this.isDarkMode = saved === 'true';
+    }
+  }
+
+  toggleDarkMode(): void {
+    if (!this.isBrowser) return;
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('darkMode', this.isDarkMode ? 'true' : 'false');
+  }
+
   buscarClima() {
-    // 1. Teste rápido: se a função responder, vai disparar essa mensagem na tela
     console.log('Botão clicado! Buscando cidade:', this.cidade);
 
     if (!this.cidade) {
